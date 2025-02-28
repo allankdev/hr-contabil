@@ -27,6 +27,11 @@ const segments = [
     image: "/saude.jpg",
     href: "/saude",
   },
+  {
+    title: "MERCADOS",
+    image: "/mercado.jpg",
+    href: "/mercados",
+  },
 ];
 
 export function SegmentsSection() {
