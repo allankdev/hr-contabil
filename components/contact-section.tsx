@@ -6,8 +6,8 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 
 export function ContactSection() {
-  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
-  const [statusMessage, setStatusMessage] = useState("");
+  const [formData, setFormData] = useState({ name: "", phone: "", email: "", message: "" });
+  const [statusMessage, setStatusMessage] = useState({ text: "", type: "" });
   const [loading, setLoading] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -17,13 +17,13 @@ export function ContactSection() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!formData.name || !formData.email || !formData.message) {
-      setStatusMessage("Preencha todos os campos obrigatórios.");
+    if (!formData.name || !formData.phone || !formData.email || !formData.message) {
+      setStatusMessage({ text: "⚠️ Preencha todos os campos obrigatórios.", type: "error" });
       return;
     }
 
     setLoading(true);
-    setStatusMessage("");
+    setStatusMessage({ text: "", type: "" });
 
     try {
       const response = await fetch("/api/send-email", {
@@ -34,13 +34,13 @@ export function ContactSection() {
 
       const data = await response.json();
       if (response.ok) {
-        setStatusMessage("Proposta enviada com sucesso! Em breve entraremos em contato.");
-        setFormData({ name: "", email: "", message: "" });
+        setStatusMessage({ text: " Proposta enviada com sucesso! Em breve entraremos em contato.", type: "success" });
+        setFormData({ name: "", phone: "", email: "", message: "" });
       } else {
-        setStatusMessage(data.error || "Ocorreu um erro ao enviar a proposta.");
+        setStatusMessage({ text: data.error || " Ocorreu um erro ao enviar a proposta.", type: "error" });
       }
     } catch (error) {
-      setStatusMessage("Erro ao enviar a proposta. Tente novamente mais tarde.");
+      setStatusMessage({ text: " Erro ao enviar a proposta. Tente novamente mais tarde.", type: "error" });
     }
 
     setLoading(false);
@@ -69,7 +69,19 @@ export function ContactSection() {
                 onChange={handleChange}
                 placeholder="Seu nome (obrigatório)"
                 className="h-12 bg-white/10 text-white placeholder:text-gray-400"
+                required
               />
+
+              <Input
+                type="tel"
+                name="phone"
+                value={formData.phone}
+                onChange={handleChange}
+                placeholder="Seu telefone (obrigatório)"
+                className="h-12 bg-white/10 text-white placeholder:text-gray-400"
+                required
+              />
+              
               <Input
                 type="email"
                 name="email"
@@ -77,21 +89,29 @@ export function ContactSection() {
                 onChange={handleChange}
                 placeholder="Seu e-mail (obrigatório)"
                 className="h-12 bg-white/10 text-white placeholder:text-gray-400"
+                required
               />
+
               <Textarea
                 name="message"
                 value={formData.message}
                 onChange={handleChange}
                 placeholder="Sua mensagem (obrigatório)"
                 className="h-32 bg-white/10 text-white placeholder:text-gray-400"
+                required
               />
+
               <Button type="submit" className="w-full bg-emerald-600 hover:bg-emerald-700" disabled={loading}>
                 {loading ? "Enviando..." : "SOLICITAR PROPOSTA"}
               </Button>
             </form>
 
             {/* Mensagem de resposta */}
-            {statusMessage && <p className="mt-4 text-sm text-gray-300">{statusMessage}</p>}
+            {statusMessage.text && (
+              <p className={`mt-4 text-sm ${statusMessage.type === "success" ? "text-green-400" : "text-red-400"}`}>
+                {statusMessage.text}
+              </p>
+            )}
           </div>
         </div>
       </div>

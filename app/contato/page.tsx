@@ -34,15 +34,15 @@ export default function Contato() {
 
       const data = await response.json();
       if (response.ok) {
-        setStatusMessage("✅ Sua mensagem foi enviada com sucesso! Em breve entraremos em contato.");
+        setStatusMessage(" Sua mensagem foi enviada com sucesso! Em breve entraremos em contato.");
         setSuccess(true);
         setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
       } else {
-        setStatusMessage("❌ Ocorreu um erro ao enviar a mensagem. Tente novamente.");
+        setStatusMessage(" Ocorreu um erro ao enviar a mensagem. Tente novamente.");
         setSuccess(false);
       }
     } catch (error) {
-      setStatusMessage("❌ Erro ao enviar a mensagem. Verifique sua conexão e tente novamente.");
+      setStatusMessage(" Erro ao enviar a mensagem. Verifique sua conexão e tente novamente.");
       setSuccess(false);
     }
 
