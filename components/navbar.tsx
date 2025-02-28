@@ -15,8 +15,10 @@ const navigation = [
       { name: "Construção Civil", href: "/construcao" },
       { name: "Holding", href: "/holding" },
       { name: "Mídias", href: "/midias" },
-      { name: "Restaurantes", href: "/restaurantes" },
+      { name: "Bares e Restaurantes", href: "/restaurantes" },
       { name: "Saúde", href: "/saude" },
+      { name: "Mercados", href: "/mercados" },
+
     ],
   },
   { name: "Abertura de Empresas", href: "/abertura" },
