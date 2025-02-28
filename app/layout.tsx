@@ -9,7 +9,10 @@ const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: "HR Contabilidade",
-  description: "Contabilidade Digital",
+  description: "Soluções contábeis para sua empresa",
+  icons: {
+    icon: "/favicon.png",
+  },
     generator: 'v0.dev'
 }
 

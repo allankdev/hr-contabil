@@ -11,7 +11,7 @@ export default function AberturaMigracao() {
   const faqs = [
     { question: "Quanto tempo leva para abrir uma empresa?", answer: "O tempo pode variar conforme o estado e tipo de empresa, mas geralmente ocorre entre 5 a 15 dias úteis." },
     { question: "O que é necessário para migrar minha empresa?", answer: "Precisamos de todos os documentos contábeis e fiscais para realizar uma análise e garantir que a migração ocorra de forma segura." },
-    { question: " Hc Contabilidade oferece suporte após a abertura?", answer: "Sim! Durante e após a abertura ou migração, oferecemos suporte completo para garantir que tudo funcione corretamente." }
+    { question: " Hr Contabilidade oferece suporte após a abertura?", answer: "Sim! Durante e após a abertura ou migração, oferecemos suporte completo para garantir que tudo funcione corretamente." }
   ];
 
   return (
@@ -20,7 +20,6 @@ export default function AberturaMigracao() {
       <section className="relative bg-cover bg-center h-96 flex items-center justify-center text-white" style={{ backgroundImage: "url('abertura.jpg')" }}>
         <div className="absolute inset-0 bg-gradient-to-r from-gray-900 via-gray-700 to-blue-500 opacity-75"></div>
         <div className="text-center relative z-10 p-6">
-          <h3 className="text-2xl font-bold drop-shadow-lg">SUPORTE ÁGIL E ESPECIALIZADO</h3>
           <h1 className="text-4xl font-bold mt-2 drop-shadow-lg">Abertura e Migração de Empresas</h1>
           <p className="mt-4 max-w-2xl mx-auto drop-shadow-lg">
             Não importa se você vai abrir uma empresa do zero ou migrar sua empresa para a Hr Contabilidade. Nós cuidamos de todos os detalhes para garantir uma transição segura e eficiente.

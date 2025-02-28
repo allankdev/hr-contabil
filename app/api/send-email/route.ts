@@ -1,13 +1,13 @@
-"use server"; 
+"use server";
 
 import { NextResponse } from "next/server";
-const nodemailer = require("nodemailer"); // Usando require()
+const nodemailer = require("nodemailer");
 
 export async function POST(req: Request) {
   try {
-    const { name, email, message } = await req.json();
+    const { name, email, phone, message } = await req.json();
 
-    if (!name || !email || !message) {
+    if (!name || !email || !phone || !message) {
       return NextResponse.json({ error: "Preencha todos os campos obrigatórios." }, { status: 400 });
     }
 
@@ -20,10 +20,10 @@ export async function POST(req: Request) {
     });
 
     const mailOptions = {
-      from: `"Contato do Site" <${email}>`,
+      from: `"HR Contabilidade" <${email}>`,
       to: "henriquerodriguescontabilidade@gmail.com",
       subject: "Nova Solicitação de Proposta",
-      text: `📌 Nome: ${name}\n📌 E-mail: ${email}\n📌 Mensagem:\n${message}`,
+      text: `📌 Nome: ${name}\n📌 E-mail: ${email}\n📌 Telefone: ${phone}\n📌 Mensagem:\n${message}`,
     };
 
     await transporter.sendMail(mailOptions);

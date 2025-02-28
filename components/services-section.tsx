@@ -110,7 +110,7 @@ export function ServicesSection() {
                     ))}
                   </div>
                   <div className="pt-4">
-                    <Link href="/migracao">
+                    <Link href="/abertura">
                       <Button className="px-6 py-6 h-auto text-sm sm:text-base font-medium group">
                         SAIBA MAIS
                         <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />

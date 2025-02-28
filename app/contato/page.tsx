@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Facebook, Instagram, Youtube, MapPin, Phone, Mail, CheckCircle, XCircle } from "lucide-react";
 
 export default function Contato() {
-  const [formData, setFormData] = useState({ name: "", email: "", subject: "", message: "" });
+  const [formData, setFormData] = useState({ name: "", email: "", phone: "", subject: "", message: "" });
   const [statusMessage, setStatusMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -16,7 +16,7 @@ export default function Contato() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!formData.name || !formData.email || !formData.message) {
+    if (!formData.name || !formData.email || !formData.phone || !formData.message) {
       setStatusMessage("⚠️ Preencha todos os campos obrigatórios.");
       setSuccess(false);
       return;
@@ -36,7 +36,7 @@ export default function Contato() {
       if (response.ok) {
         setStatusMessage("✅ Sua mensagem foi enviada com sucesso! Em breve entraremos em contato.");
         setSuccess(true);
-        setFormData({ name: "", email: "", subject: "", message: "" });
+        setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
       } else {
         setStatusMessage("❌ Ocorreu um erro ao enviar a mensagem. Tente novamente.");
         setSuccess(false);
@@ -68,7 +68,7 @@ export default function Contato() {
           <ul className="space-y-4 text-gray-600">
             <li className="flex items-center gap-3">
               <MapPin className="text-blue-600" />
-              R. João Lélis, 11, Castelo Branco - João Pessoa/PB, 58050-130
+              R. João Lélis, 11 A, Castelo Branco - João Pessoa/PB, 58050-130
             </li>
             <li className="flex items-center gap-3">
               <Phone className="text-green-600" />
@@ -107,6 +107,7 @@ export default function Contato() {
           <form onSubmit={handleSubmit} className="space-y-4">
             <input type="text" name="name" value={formData.name} onChange={handleChange} placeholder="Seu Nome (obrigatório)" className="w-full px-4 py-3 border rounded-md focus:ring focus:ring-blue-300" required />
             <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="Seu E-mail (obrigatório)" className="w-full px-4 py-3 border rounded-md focus:ring focus:ring-blue-300" required />
+            <input type="tel" name="phone" value={formData.phone} onChange={handleChange} placeholder="Seu Telefone (obrigatório)" className="w-full px-4 py-3 border rounded-md focus:ring focus:ring-blue-300" required />
             <input type="text" name="subject" value={formData.subject} onChange={handleChange} placeholder="Assunto" className="w-full px-4 py-3 border rounded-md focus:ring focus:ring-blue-300" />
             <textarea name="message" value={formData.message} onChange={handleChange} placeholder="Sua Mensagem (obrigatório)" className="w-full px-4 py-3 border rounded-md focus:ring focus:ring-blue-300" rows={4} required></textarea>
             <button type="submit" className="w-full bg-blue-600 text-white py-3 rounded-md font-semibold hover:bg-blue-700 transition" disabled={loading}>

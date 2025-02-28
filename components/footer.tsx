@@ -27,7 +27,7 @@ export function Footer() {
           <div className="flex flex-col items-center md:items-center text-center">
             <h3 className="mb-4 text-lg font-semibold uppercase">Endereço</h3>
             <p className="text-gray-300 max-w-xs leading-relaxed">
-              R. João Lélis, 11 - Castelo Branco <br />
+              R. João Lélis, 11 A  - Castelo Branco <br />
               João Pessoa - PB, 58050-130
             </p>
             <p className="text-gray-300 mt-4 font-semibold">(83) 98825-8541</p>
